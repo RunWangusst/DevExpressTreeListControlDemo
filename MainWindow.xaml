@@ -1,0 +1,26 @@
+<Window x:Class="ChildNodesSelector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:local="clr-namespace:ChildNodesSelector"
+        Title="MainWindow" Height="450" Width="700">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <local:CustomChildrenSelector x:Key="childrenSelector"/>
+    </Window.Resources>
+    <Grid>
+        <dxg:TreeListControl ItemsSource="{Binding DataItems}" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True">
+            <dxg:TreeListControl.View>
+                <dxg:TreeListView 
+                                  SearchPanelAllowFilter="True"
+                                  ExpandNodesOnFiltering ="True"
+                                  KeyFieldName="Id"
+                                  ParentFieldName="ParentId"
+                                  FilterMode ="Extended"
+                                  ShowSearchPanelMode="Always"/>
+            </dxg:TreeListControl.View>
+        </dxg:TreeListControl>
+    </Grid>
+</Window>
